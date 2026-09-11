@@ -28691,6 +28691,7 @@ display_mode_element (struct it *it, int depth, int field_width, int precision,
 				{
 				  glyph[i].object = elt;
 				  glyph[i].charpos = charpos;
+				  glyph[i].tty_url_hash = 0;
 				}
 
 			      n += nwritten;
@@ -32227,6 +32228,7 @@ append_glyph (struct it *it)
 	}
       glyph->charpos = CHARPOS (it->position);
       glyph->object = it->object;
+      glyph->tty_url_hash = 0;
       if (it->pixel_width > 0)
 	{
 	  eassert (it->pixel_width <= SHRT_MAX);
@@ -32309,6 +32311,7 @@ append_composite_glyph (struct it *it)
 	}
       glyph->charpos = it->cmp_it.charpos;
       glyph->object = it->object;
+      glyph->tty_url_hash = 0;
       eassert (it->pixel_width <= SHRT_MAX);
       glyph->pixel_width = it->pixel_width;
       glyph->ascent = it->ascent;
@@ -32531,6 +32534,7 @@ produce_image_glyph (struct it *it)
 	{
 	  glyph->charpos = CHARPOS (it->position);
 	  glyph->object = it->object;
+	  glyph->tty_url_hash = 0;
 	  glyph->pixel_width = clip_to_bounds (-1, it->pixel_width, SHRT_MAX);
 	  glyph->ascent = glyph_ascent;
 	  glyph->descent = it->descent;
@@ -32637,6 +32641,7 @@ produce_xwidget_glyph (struct it *it)
 	{
 	  glyph->charpos = CHARPOS (it->position);
 	  glyph->object = it->object;
+	  glyph->tty_url_hash = 0;
 	  glyph->pixel_width = clip_to_bounds (-1, it->pixel_width, SHRT_MAX);
 	  glyph->ascent = glyph_ascent;
 	  glyph->descent = it->descent;
@@ -32723,6 +32728,7 @@ append_stretch_glyph (struct it *it, Lisp_Object object,
 	}
       glyph->charpos = CHARPOS (it->position);
       glyph->object = object;
+      glyph->tty_url_hash = 0;
       /* FIXME: It would be better to use TYPE_MAX here, but
 	 __typeof__ is not portable enough...  */
       glyph->pixel_width = clip_to_bounds (-1, width, SHRT_MAX);
@@ -33374,6 +33380,7 @@ append_glyphless_glyph (struct it *it, int face_id, bool for_no_font, int len,
 	}
       glyph->charpos = CHARPOS (it->position);
       glyph->object = it->object;
+      glyph->tty_url_hash = 0;
       eassert (it->pixel_width <= SHRT_MAX);
       glyph->pixel_width = it->pixel_width;
       glyph->ascent = it->ascent;
